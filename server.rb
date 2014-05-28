@@ -52,14 +52,14 @@ end
 get '/actors/:id' do
 
 identifier = params[:id]
-query ="SELECT movies.title, cast_members.character
+query ="SELECT movies.title, movies.id, cast_members.character
  FROM cast_members JOIN movies ON movies.id = cast_members.movie_id
  WHERE cast_members.actor_id = #{identifier}"
 
 @results = db_connection do |conn|
   conn.exec(query)
 end
-
+binding.pry
   erb :'actors/show'
 end
 
