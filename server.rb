@@ -42,13 +42,6 @@ end
 
 
 
-
-
-
-
-
-
-
 get '/actors/:id' do
 
 identifier = params[:id]
@@ -59,7 +52,7 @@ query ="SELECT movies.title, movies.id, cast_members.character
 @results = db_connection do |conn|
   conn.exec(query)
 end
-binding.pry
+
   erb :'actors/show'
 end
 
@@ -68,8 +61,18 @@ end
 
 get '/movies' do
 
+#query = "SELECT movies.title, movies.year, movies.rating FROM movies"
+
+@results = db_connection do |conn|
+  conn.exec('SELECT movies.title, movies.id, movies.year, movies.rating, genres.name AS genre,
+    studios.name AS studio FROM movies JOIN genres ON genres.id = movies.genre_id
+    JOIN studios ON studios.id = movies.studio_id ORDER BY movies.title ASC')
+end
   erb :'movies/index'
 end
+
+
+
 
 get 'movies/:id' do
 
