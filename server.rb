@@ -35,9 +35,6 @@ get '/actors' do
   conn.exec('SELECT actors.name, actors.id FROM actors ORDER BY actors.name ASC')
 end
 
-
-
-
   erb :'actors/index'
 
 end
@@ -54,8 +51,19 @@ end
 
 get '/actors/:id' do
 
-  erb
+identifier = params[:id]
+query ="SELECT movies.title, cast_members.character
+ FROM cast_members JOIN movies ON movies.id = cast_members.movie_id
+ WHERE cast_members.actor_id = #{identifier}"
+
+@results = db_connection do |conn|
+  conn.exec(query)
 end
+
+  erb :'actors/show'
+end
+
+
 
 
 get '/movies' do

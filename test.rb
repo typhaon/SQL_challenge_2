@@ -18,6 +18,10 @@ end
 @results = db_connection do |conn|
   conn.exec('SELECT actors.name FROM actors ORDER BY actors.name ASC')
 end
-@results = @results.to_a
-binding.pry
 
+@results = @results.to_a
+
+
+
+
+hbnm
