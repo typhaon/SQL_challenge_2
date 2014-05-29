@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+
+
+<h1> MOVIES </h1>
+
+
+
+    <ul>
+      <% @results.each do |movie| %>
+        <li>
+          <%="#{movie["title"]}"%>
+        </li>
+      <% end %>
+    </ul>
+
+</html>
