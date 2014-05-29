@@ -2,16 +2,18 @@
 <html>
 
 
-<h1> MOVIES </h1>
-<h2>Movie</h2>
-<h3>Genre</h3>
-<h3>Studio</h3>
+<h1> MOVIE DATA </h1>
+
+
+<h2> <%= @movie_results["title"] %> </h2>
+<h3> <%= @movie_results["genre"] %> </h3>
+<h3> <%= @movie_results["studio"] %> </h3>
 
 
     <ul>
       <% @results.each do |actor| %>
         <li>
-          <%="#{actor["character"]}"%>  --  <%="#{actor["name"]}"%>
+          <%="#{actor["character"]}"%>  --  <a href="/actors/<%="#{actor["id"]}"%>"><%="#{actor["name"]}"%></a>
         </li>
       <% end %>
     </ul>
