@@ -3,13 +3,15 @@
 
 
 <h1> MOVIES </h1>
-
+<h2>Movie</h2>
+<h3>Genre</h3>
+<h3>Studio</h3>
 
 
     <ul>
-      <% @results.each do |movie| %>
+      <% @results.each do |actor| %>
         <li>
-          <%="#{movie["title"]}"%>
+          <%="#{actor["character"]}"%>  --  <%="#{actor["name"]}"%>
         </li>
       <% end %>
     </ul>

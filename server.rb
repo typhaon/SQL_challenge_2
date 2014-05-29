@@ -85,9 +85,9 @@ query = "SELECT movies.title, genres.name AS genre, studios.name AS studio, acto
     JOIN actors ON actors.id = cast_members.actor_id
     WHERE movies.id = #{identifier}"
 
+
 @results = db_connection do |conn|
   conn.exec(query)
-
 end
 
   erb :'movies/show'
